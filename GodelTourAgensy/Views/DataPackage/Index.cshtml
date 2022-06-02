@@ -1,0 +1,20 @@
+﻿@model GodelTourAgensy.Models.Data.SearchViewModel
+
+@{
+    ViewData["Title"] = "Поиск путёвок";
+}
+
+<div class="container">
+    <div class="col-4">
+        <form asp-action="SearchRes" asp-action-filt="@Model" method="post">
+            <label asp-for="@Model.FilterType" class="control-label m-1"></label>
+            <select asp-for="@Model.FilterType" class="form-control m-1">
+                <option value="2">Дата начала</option>
+                <option value="3">Дата окончания</option>
+            </select>
+            <label asp-for="@Model.Value" class="control-label m-1"></label>
+            <input asp-for="@Model.Value" class="form-control m-1" />
+            <input type="submit" class="btn btn-dark m-1" />
+        </form>
+    </div>
+</div>

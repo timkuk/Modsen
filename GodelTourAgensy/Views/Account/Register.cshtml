@@ -1,0 +1,29 @@
+﻿@model GodelTourAgensy.Models.Account.RegisterViewModel
+
+<div class="col-sm-2">
+    <h2>Регистрация нового пользователя</h2>
+    <form method="post" asp-controller="Account" asp-action="Register" class="form-group">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="Email"></label><br />
+            <input class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="Password"></label><br />
+            <input class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="PasswordConfirm"></label><br />
+            <input class="form-control" asp-for="PasswordConfirm" />
+            <span asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <div>
+            <br/>
+        </div>
+        <div>
+            <input class="form-control btn btn-success" type="submit" value="Регистрация" />
+        </div>
+    </form>
+</div>

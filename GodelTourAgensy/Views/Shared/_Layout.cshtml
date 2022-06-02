@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
+            <div class="container">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="Home" asp-action="Index">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="Room" asp-action="Index">Комнаты</a>
+                        </li>
+
+                        @if (User.IsInRole("user"))
+                        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-controller="TravelPackage" asp-action="IndexById">Мои путёвки</a>
+            </li>}
+
+                        @if (User.IsInRole("admin"))
+                        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-controller="Client" asp-action="Index">Клиенты</a>
+            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="TravelPackage" asp-action="Index">Путёвки</a>
+                            </li>}
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="AdditionalService" asp-action="Index">Услуги</a>
+                        </li>
+
+                        @if (User.IsInRole("admin"))
+                        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-controller="Users" asp-action="Index">
+                    Пользователи
+                </a>
+            </li>}
+                    </ul>
+                </div>
+
+                <div class="mx-auto" style="width:200px;">
+                    <ul style="list-style: none;">
+                        <li class="nav-item">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="text-light nav-link">@User.Identity.Name</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form method="post" class="nav-link text-light" asp-controller="Account" asp-action="Logout">
+                            <input class="exit" type="submit" value="Выход" />
+                        </form>
+                    </li>
+                </ul> }
+                            else
+                            {
+                <ul class="navbar-nav flex-grow-1">
+
+                    <li class="nav-item">
+                        <a class="nav-fill text-dark nav-link" asp-controller="Account" asp-action="Login">Вход</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-fill text-dark nav-link" asp-controller="Account" asp-action="Register">Регистрация</a>
+                    </li>
+                </ul>}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-xxl">
+        <main role="main" class="pb-1">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

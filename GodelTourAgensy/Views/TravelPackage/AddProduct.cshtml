@@ -1,0 +1,23 @@
+﻿@model OnPackageCreatingViewModel
+
+<div class="container">
+    <form asp-action="AddProduct" asp-action-curOrder="@Model" method="post">
+        <div class="form-group">
+            <label class="form-control control-label">Текущий номер путёвки: @Model.Value</label>
+            <input asp-for="@Model.Value" type="hidden" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.CurrentService.Id" title="Товар" class="control-label"></label>
+            <select asp-for="@Model.CurrentService.Id" class="form-control">
+                @foreach (var item in ViewBag.Services)
+                {
+                    <option value="@item.Id">
+                        (@item.Id) @item.Name
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="@Model.CurrentService.Id" class="text-danger"></span>
+        </div>
+        <input class="btn btn-success" type="submit" value="Подтвердить" />
+    </form>
+</div>

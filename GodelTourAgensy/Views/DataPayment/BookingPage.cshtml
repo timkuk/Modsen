@@ -1,0 +1,18 @@
+﻿@model GodelTourAgensy.Models.Data.PaymentSearchViewModel
+
+@{
+    ViewData["Title"] = "Поиск";
+}
+
+<div class="container">
+    <div class="col-4">
+        <form asp-action="SearchBooking" asp-action-filt="@Model" method="post">
+            <label asp-for="@Model.Date" class="control-label m-1"></label>
+            <input asp-for="@Model.Date" class="form-control m-1" />
+
+            <label class="control-label m-1">Забронированно</label>
+            <input asp-for="@Model.IsEnabled" class="form-control m-1" />
+            <input type="submit" class="btn btn-dark m-1" />
+        </form>
+    </div>
+</div>

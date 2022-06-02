@@ -1,0 +1,37 @@
+﻿@model GodelTourAgensy.DAL.Entities.AdditionalServiceEntity
+
+@{ ViewData["Title"] = "Удаление"; }
+
+<div class="container">
+    <h1>Удаление</h1>
+
+    <h3>Вы действительно хотите удалить?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="submit" value="Удалить" class="btn btn-danger m-1" />
+            <a asp-action="Index" class="m-1">Назад</a>
+        </form>
+    </div>
+</div>
